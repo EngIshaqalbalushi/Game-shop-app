@@ -11,9 +11,9 @@ app.use(express.json());
 const db = mysql.createConnection({
   host: "127.0.0.1",   // 👈 force IPv4, fixes ECONNREFUSED ::1:3306
   user: "root",
-  password: "yourpassword", // use your real MySQL password
+  password: "root", // use your real MySQL password
   database: "game_shop",
-  port: 3306
+  port: 3307
 });
 
 // Test connection
@@ -23,7 +23,7 @@ db.connect(err => {
 });
 
 // Routes
-app.get("/games", (req, res) => {
+app.get("/games", (req, res) => {   
   db.query("SELECT * FROM games", (err, results) => {
     if (err) throw err;
     res.json(results);
