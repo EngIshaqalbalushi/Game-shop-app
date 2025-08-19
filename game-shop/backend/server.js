@@ -9,10 +9,11 @@ app.use(express.json());
 
 // DB Connection
 const db = mysql.createConnection({
-  host: "localhost",
+  host: "127.0.0.1",   // 👈 force IPv4, fixes ECONNREFUSED ::1:3306
   user: "root",
-  password: "yourpassword",
-  database: "game_shop"
+  password: "yourpassword", // use your real MySQL password
+  database: "game_shop",
+  port: 3306
 });
 
 // Test connection
